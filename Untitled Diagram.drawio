@@ -1,11 +1,77 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="26.0.6">
   <diagram name="Page-1" id="c0FnsG70GIqEWtbJqfvi">
-    <mxGraphModel dx="1202" dy="1723" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2412" dy="1910" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="fEJTIsRuH-MWkgCdObkV-1" value="+---------------------+&#xa;|  AWS Systems Manager|&#xa;|  Parameter Store    |&#xa;|                     |&#xa;|  (Stores Configs)  |&#xa;+----------+----------+&#xa;           |&#xa;           | Update Parameter (e.g., MongoDB Connection String)&#xa;           |&#xa;           v&#xa;+----------+----------+&#xa;|  AWS CloudTrail     |&#xa;|  (Tracks API Calls) |&#xa;+----------+----------+&#xa;           |&#xa;           | Event Trigger (Parameter Update Detected)&#xa;           |&#xa;           v&#xa;+----------+----------+&#xa;|  AWS EventBridge    |&#xa;|  (CloudWatch Events) |&#xa;|                     |&#xa;|  (Triggers Lambda)  |&#xa;+----------+----------+&#xa;           |&#xa;           | Invoke Lambda Function&#xa;           |&#xa;           v&#xa;+----------+----------+&#xa;|  AWS Lambda         |&#xa;|  (Update Notifier)  |&#xa;|                     |&#xa;|  - Publishes SNS    |&#xa;|    Notification      |&#xa;+----------+----------+&#xa;           |&#xa;           | Publish Notification&#xa;           |&#xa;           v&#xa;+----------+----------+&#xa;|  AWS SNS            |&#xa;|  (Notification Topic)|&#xa;|                     |&#xa;|  - Sends Message to  |&#xa;|    Subscribed Endpoints|&#xa;+----------+----------+&#xa;           |&#xa;           | Notify Microservices&#xa;           |&#xa;           v&#xa;+----------+----------+&#xa;|  Microservice A     |&#xa;|  (e.g., Service A)  |&#xa;|                     |&#xa;|  - Receives SNS     |&#xa;|    Notification      |&#xa;|  - Fetches Updated   |&#xa;|    Config from       |&#xa;|    Parameter Store   |&#xa;|  - Updates Internal  |&#xa;|    Configuration     |&#xa;|  - Processes API     |&#xa;|    Requests with     |&#xa;|    Updated Config    |&#xa;+----------+----------+&#xa;           |&#xa;           | Process Requests with Updated Config&#xa;           |&#xa;           v&#xa;+----------+----------+&#xa;|  Client Requests     |&#xa;|  (e.g., API Calls)   |&#xa;+---------------------+" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="175" y="-477" width="350" height="1060" as="geometry" />
+        <mxCell id="Cn_1MunGRuZewduoVhI2-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Cn_1MunGRuZewduoVhI2-1" target="Cn_1MunGRuZewduoVhI2-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-25" y="-560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-1" value="&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;AWS Systems Manager&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;Parameter Store&lt;br&gt;(Stores Config)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-150" y="-690" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Cn_1MunGRuZewduoVhI2-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-25" y="-400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-8" value="AWS CloudTrail&lt;div&gt;(Tracks API Calls)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-150" y="-560" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-9" value="Update Parameter (e.g., MongoDB Connection String)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-165" y="-612" width="310" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Cn_1MunGRuZewduoVhI2-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-25" y="-240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-11" value="&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp;AWS EventBridge&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp;(CloudWatch Events)&amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;(Triggers Lambda)&amp;nbsp;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-150" y="-400" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-12" value="Event Trigger (Parameter Update Detected)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-150" y="-452" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-14" value="Invoke Lambda Function" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-95" y="-300" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Cn_1MunGRuZewduoVhI2-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-25" y="-80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-15" value="AWS Lambda (Update Notifier)&lt;br&gt;&lt;br&gt;Publishes SNS Notification" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-150" y="-240" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Cn_1MunGRuZewduoVhI2-17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-20" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-17" value="AWS SNS (Notification Topic)&lt;br&gt;&lt;br&gt;&lt;div&gt;Sends Message to Subscribed Endpoints&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-160" y="-80" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-19" value="&lt;span style=&quot;color: rgb(255, 255, 255); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(27, 29, 30); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;Publish Notification&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-80" y="-130" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-21" value="&#xa;&lt;span style=&quot;color: rgb(255, 255, 255); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(27, 29, 30); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;Notify Microservices&lt;/span&gt;&#xa;&#xa;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-90" y="20" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Cn_1MunGRuZewduoVhI2-22">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-15" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-22" value="&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;Microservice A&amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; (e.g., Service A)&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; - Receives SNS&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp; Notification&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp;Fetches Updated&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp; Config from&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp;Parameter Store&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp;- Updates Internal&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp; Configuration&amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp;- Processes API&amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp;Requests with&amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp; Updated Config&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-160" y="90" width="290" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-24" value="Process Requests with Updated Config" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-145" y="328" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Cn_1MunGRuZewduoVhI2-25" value="API Calls" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-150" y="410" width="280" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
